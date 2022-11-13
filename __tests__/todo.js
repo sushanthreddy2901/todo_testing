@@ -3,15 +3,13 @@ const todoList = require("../todo");
 const { all, markAsComplete, add, overdue, dueToday, dueLater } = todoList();
 describe("Todolist Test Suite", () => {
   beforeAll(() => {
-    const today = new Date();
+    const presentday = new Date();
     const oneDay = 60 * 60 * 24 * 1000;
     [
       {
         title: "Book Tickets",
         completed: false,
-        dueDate: new Date(today.getTime() - 2 * oneDay).toLocaleDateString(
-          "en-CA"
-        ),
+        dueDate: new Date(presentday.getTime() - 2 * oneDay).toLocaleDateString("en-CA"),
       },
       {
         title: "Pay Exam fees",
@@ -21,9 +19,7 @@ describe("Todolist Test Suite", () => {
       {
         title: "Complete Assignment",
         completed: false,
-        dueDate: new Date(today.getTime() + 2 * oneDay).toLocaleDateString(
-          "en-CA"
-        ),
+        dueDate: new Date(presentday.getTime() + 2 * oneDay).toLocaleDateString("en-CA"),
       },
     ].forEach(add);
   });
